@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#090d16" id="theme-meta">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Didar Ibn Firoz - Official NFC Emergency Contact & Identity Card. If you found an item belonging to Didar, please reach out immediately.">
+  <meta property="og:title" content="Didar Ibn Firoz | NFC Contact & Lost Item Portal">
+  <meta property="og:description" content="Official NFC Contact Card & Emergency Lost Item Recovery for Didar Ibn Firoz. One-tap Call, WhatsApp, Location, and Profiles.">
+  <meta property="og:image" content="assets/didar-profile.jpg">
+  <meta property="og:type" content="profile">
+  
+  <title>Didar Ibn Firoz | NFC Contact & Emergency Portal</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/didar-profile.jpg">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+
+  <!-- Background Glowing Blobs -->
+  <div class="bg-glow-container" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- Top Navigation / Utility Bar -->
+    <header class="top-nav">
+      <div class="nfc-chip-badge">
+        <span class="nfc-dot"></span>
+        <span class="nfc-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8.32a7.43 7.43 0 0 1 0 7.36"></path>
+            <path d="M9.46 6.21a11.76 11.76 0 0 1 0 11.58"></path>
+            <path d="M12.91 4.1a15.91 15.91 0 0 1 0 15.8"></path>
+            <path d="M16.37 2a20.16 20.16 0 0 1 0 20"></path>
+          </svg>
+        </span>
+        <span class="nfc-label">NFC Card Active</span>
+      </div>
+
+      <div class="nav-controls">
+        <button id="themeToggleBtn" class="icon-btn" aria-label="Toggle Theme" title="Switch between dark and light mode">
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button id="qrModalBtn" class="icon-btn" aria-label="Show QR Code" title="Display QR Code for scanning">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </button>
+
+        <button id="sharePageBtn" class="icon-btn" aria-label="Share Contact" title="Share via phone share menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Profile Hero Card -->
+    <section class="profile-hero-card">
+      <div class="avatar-wrapper">
+        <div class="avatar-ring">
+          <img src="assets/didar-profile.jpg" alt="Didar Ibn Firoz" class="avatar-image" loading="eager">
+        </div>
+        <div class="status-badge" title="Owner Status: Active & Reachable">
+          <span class="status-pulse"></span>
+          <span class="status-text">Reachable</span>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <div class="name-badge-row">
+          <h1 class="profile-name">Didar Ibn Firoz</h1>
+          <span class="verified-icon" title="Verified Owner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#38bdf8">
+              <path d="M12 2L15.09 5.26L19.5 5.92L19.82 10.38L23 13.5L20.27 17.08L20.6 21.54L16.14 21.87L13.04 25L9.95 21.87L5.49 21.54L5.82 17.08L3.09 13.5L6.27 10.38L6.59 5.92L11 5.26L12 2Z"/>
+              <path d="M9 12.5L11 14.5L15.5 10" stroke="#090d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        
+        <p class="profile-role">Information & Communication Engineering</p>
+        <p class="profile-institution">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          Bangladesh University of Professionals (BUP)
+        </p>
+        <p class="profile-location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Rupnagar, Mirpur 2, Dhaka-1216
+        </p>
+      </div>
+
+      <!-- Quick Action: Save Contact (.vcf) -->
+      <button id="saveContactBtn" class="btn-save-vcard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+          <polyline points="7 3 7 8 15 8"></polyline>
+        </svg>
+        <span>Save Contact to Phone</span>
+      </button>
+    </section>
+
+    <!-- SECTION 1: EMERGENCY & LOST ITEM CONTACT (TOP PRIORITY) -->
+    <section class="lost-and-found-section">
+      <div class="lost-header">
+        <div class="alert-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="alert-title-wrap">
+          <h2>Found a Lost Item or Card?</h2>
+          <p>Please reach out immediately. Your help in returning this item is deeply appreciated!</p>
+        </div>
+      </div>
+
+      <!-- Emergency Buttons Grid -->
+      <div class="emergency-action-grid">
+        <!-- Direct Call Primary -->
+        <a href="tel:+8801959089483" class="action-card call-primary" id="callPrimaryLink">
+          <div class="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="action-info">
+            <span class="action-tag">Primary Line</span>
+            <span class="action-label">Call +880 1959-089483</span>
+            <span class="action-sub">Tap to Call Directly</span>
+          </div>
+          <div class="action-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Direct Call Secondary -->
+        <a href="tel:+8801516500270" class="action-card call-secondary" id="callSecondaryLink">
+          <div class="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="action-info">
+            <span class="action-tag">Alternative Line</span>
+            <span class="action-label">Call +880 1516-500270</span>
+            <span class="action-sub">Tap if 1st number is busy</span>
+          </div>
+          <div class="action-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Direct WhatsApp -->
+        <a href="https://wa.me/8801959089483?text=Hello%20Didar,%20I%20scanned%20your%20NFC%20tag%20and%20found%20an%20item%20belonging%20to%20you.%20Please%20let%20me%20know%20how%20to%20return%20it%20to%20you." target="_blank" rel="noopener noreferrer" class="action-card whatsapp-direct" id="whatsappLink">
+          <div class="action-icon whatsapp-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.33C9.33 7.33 9 7.41 8.73 7.71C8.45 8.01 7.68 8.74 7.68 10.22C7.68 11.7 8.76 13.13 8.91 13.33C9.06 13.53 11.03 16.57 14.04 17.87C14.76 18.18 15.32 18.37 15.76 18.51C16.48 18.74 17.13 18.71 17.65 18.63C18.23 18.54 19.44 17.9 19.69 17.19C19.95 16.48 19.95 15.87 19.87 15.74C19.8 15.62 19.6 15.54 19.3 15.39C19 15.24 17.53 14.52 17.25 14.42C16.98 14.32 16.78 14.27 16.58 14.57C16.38 14.87 15.8 15.54 15.63 15.74C15.45 15.94 15.28 15.97 14.98 15.82C14.68 15.67 13.72 15.36 12.58 14.34C11.69 13.55 11.09 12.57 10.92 12.27C10.74 11.97 10.9 11.81 11.05 11.66C11.19 11.53 11.36 11.31 11.5 11.13C11.66 10.96 11.71 10.84 11.81 10.64C11.91 10.43 11.86 10.26 11.79 10.11C11.71 9.96 11.14 8.56 10.91 8C10.68 7.46 10.45 7.53 10.28 7.53C10.12 7.52 9.92 7.52 9.72 7.52C9.53 7.52 9.53 7.33 9.53 7.33Z"/>
+            </svg>
+          </div>
+          <div class="action-info">
+            <span class="action-tag tag-whatsapp">WhatsApp Direct</span>
+            <span class="action-label">Chat on WhatsApp</span>
+            <span class="action-sub">Pre-filled recovery message</span>
+          </div>
+          <div class="action-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Share Current Location Button -->
+        <button id="shareLocationBtn" class="action-card location-card">
+          <div class="action-icon location-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="3"></circle>
+              <line x1="12" y1="2" x2="12" y2="5"></line>
+              <line x1="12" y1="19" x2="12" y2="22"></line>
+              <line x1="2" y1="12" x2="5" y2="12"></line>
+              <line x1="19" y1="12" x2="22" y2="12"></line>
+            </svg>
+          </div>
+          <div class="action-info">
+            <span class="action-tag tag-location">Instant Pin</span>
+            <span class="action-label" id="locBtnText">Send Found Location</span>
+            <span class="action-sub" id="locBtnSub">Send Google Maps pin via WhatsApp</span>
+          </div>
+          <div class="action-arrow">
+            <span class="loading-spinner-small" id="locSpinner" style="display: none;"></span>
+            <svg class="loc-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </button>
+
+        <!-- Direct SMS Fallback -->
+        <a href="sms:+8801959089483?body=Hello%20Didar,%20I%20found%20your%20item%20via%20your%20NFC%20tag.%20Please%20contact%20me." class="action-card sms-card">
+          <div class="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="action-info">
+            <span class="action-tag">Offline SMS</span>
+            <span class="action-label">Send Text Message</span>
+            <span class="action-sub">No mobile data needed</span>
+          </div>
+          <div class="action-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 2: VERIFIED CONTACT & LOCATION DETAILS -->
+    <section class="info-details-section">
+      <h3 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        Owner Details & Address
+      </h3>
+
+      <div class="info-list">
+        <!-- Phone 1 with Copy -->
+        <div class="info-item">
+          <div class="info-item-left">
+            <span class="item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </span>
+            <div class="item-text">
+              <span class="item-title">Primary Phone / WhatsApp</span>
+              <a href="tel:+8801959089483" class="item-val">+880 1959-089483</a>
+            </div>
+          </div>
+          <button class="btn-copy" data-copy="+8801959089483" title="Copy Number" aria-label="Copy primary phone number">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Phone 2 with Copy -->
+        <div class="info-item">
+          <div class="info-item-left">
+            <span class="item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </span>
+            <div class="item-text">
+              <span class="item-title">Secondary Phone Line</span>
+              <a href="tel:+8801516500270" class="item-val">+880 1516-500270</a>
+            </div>
+          </div>
+          <button class="btn-copy" data-copy="+8801516500270" title="Copy Number" aria-label="Copy secondary phone number">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Email with Copy -->
+        <div class="info-item">
+          <div class="info-item-left">
+            <span class="item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+            <div class="item-text">
+              <span class="item-title">Email Address</span>
+              <a href="mailto:didarabid@gmail.com" class="item-val">didarabid@gmail.com</a>
+            </div>
+          </div>
+          <button class="btn-copy" data-copy="didarabid@gmail.com" title="Copy Email" aria-label="Copy email address">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Address with Maps Link -->
+        <div class="info-item">
+          <div class="info-item-left">
+            <span class="item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <div class="item-text">
+              <span class="item-title">Home Address</span>
+              <span class="item-val">Rupnagar, Mirpur 2, Dhaka-1216</span>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rupnagar,+Mirpur+2,+Dhaka-1216" target="_blank" rel="noopener noreferrer" class="btn-copy" title="Open in Google Maps" aria-label="Open address in Google Maps">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SOCIAL & ONLINE PROFILES -->
+    <section class="socials-section">
+      <h3 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+        Social Accounts & Web Profiles
+      </h3>
+
+      <div class="social-grid">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/1KmVA1VaEd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-card facebook-brand">
+          <div class="social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <div class="social-meta">
+            <span class="social-platform">Facebook</span>
+            <span class="social-handle">Didar Ibn Firoz</span>
+          </div>
+          <div class="social-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/__only_4_potato__?stkn=Y2I2Znd5dzNxcDN4&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-card instagram-brand">
+          <div class="social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="social-meta">
+            <span class="social-platform">Instagram</span>
+            <span class="social-handle">@__only_4_potato__</span>
+          </div>
+          <div class="social-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/didar-ibn-firoz-376320414/" target="_blank" rel="noopener noreferrer" class="social-card linkedin-brand">
+          <div class="social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </div>
+          <div class="social-meta">
+            <span class="social-platform">LinkedIn</span>
+            <span class="social-handle">didar-ibn-firoz</span>
+          </div>
+          <div class="social-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/urSushi" target="_blank" rel="noopener noreferrer" class="social-card github-brand">
+          <div class="social-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </div>
+          <div class="social-meta">
+            <span class="social-platform">GitHub</span>
+            <span class="social-handle">@urSushi</span>
+          </div>
+          <div class="social-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4: NFC CARD SETUP GUIDE (ACCORDION) -->
+    <section class="nfc-guide-section">
+      <details class="guide-details">
+        <summary class="guide-summary">
+          <span class="guide-summary-left">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            How to link this to your physical NFC card / tag
+          </span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </summary>
+        <div class="guide-content">
+          <ol>
+            <li><strong>Install 'NFC Tools'</strong>: Download the free <em>NFC Tools</em> app on Android (Play Store) or iPhone (App Store).</li>
+            <li><strong>Copy URL</strong>: Tap the share/copy button at the top to copy this website link.</li>
+            <li><strong>Write Tag</strong>: Open NFC Tools &gt; Tap <strong>Write</strong> &gt; <strong>Add a record</strong> &gt; <strong>URL / URI</strong> &gt; Paste this website URL.</li>
+            <li><strong>Scan Card</strong>: Tap <strong>Write</strong> and hold your physical NFC card or keychain tag against the back of your phone. Done! Now anyone who taps your card will instantly open this page!</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Secure NFC Identity & Recovery Portal</span>
+      </div>
+      <p class="footer-text">Designed for instant mobile NFC tap on iOS & Android</p>
+      <p class="footer-copy">&copy; 2026 Didar Ibn Firoz. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <!-- MODAL: QR Code Modal -->
+  <div id="qrModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>NFC & QR Code</h3>
+        <button id="closeQrModalBtn" class="modal-close-btn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="qr-desc">Scan with any phone camera if NFC is unavailable:</p>
+        <div id="qrCodeContainer" class="qr-frame">
+          <!-- QR code rendered dynamically via JS -->
+        </div>
+        <div class="qr-action-row">
+          <button id="copySiteUrlBtn" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy Website Link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-popup" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
